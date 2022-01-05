@@ -48,3 +48,43 @@ Preciso colocar o valor de Plaintext e o valor de DevAddr em uma variável. Prec
 Desde já agradeço.
 
 Zé Roberto
+
+### Resolução :tada:
+Para localizar os dados dentro da string, recebida de um retorno em texto, foi criado uma função para retornar o valor procurado.
+
+**getTextDataValue(Dados, ValorProcurado)**
+
+```
+/**
+ * @param string $dados
+ * @param string $procurar
+ * @param int    $td
+ * @param int    $rp
+ * @param int    $posI
+ * @param int    $posF
+ */
+
+function getTextDataValue($dados, $procurar){
+    $td = strlen($dados); 
+    $tp = strlen($procurar);
+
+    //Verificar se tem caracters nos dados
+    if ( $td > 0 && $tp > 0){
+        $posI = strpos($dados, $procurar) + $tp;
+        $posF = strpos($dados, " ", $posI) - $posI;
+
+        //Verificar se a posição inicial é maior que tamanho da string procurada
+        if ($posI > $tp) {
+            $result = substr($dados, $posI, $posF);
+        }else{
+            $result = "O texto $procurar não foi encontrado.\n";
+        }
+
+    }else{
+        $result = "Sem dados correto.\n";
+    }
+
+    return $result;
+}
+?>
+```
