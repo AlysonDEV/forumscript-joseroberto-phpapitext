@@ -1,3 +1,6 @@
+<?php 
+require_once('./txtapiphp.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,49 +39,14 @@ Message Type = Data
              FCtrl.ACK = false
              FCtrl.ADR = true
        FCtrl.ADRACKReq = false";
-$src1 = "Plaintext = ";
-$scr2 = "DevAddr = ";
-// echo preg_match("/{$src1}/i", $dr);
-// $res = strpos($dr, $src1) + strlen($src1);
-// $ress = strpos($dr, " ", $res) - $res;
-// $valor = substr($dr, $res, $ress);
-// echo $res . " and " . $ress . " = " . $valor;
+ 
+ 
 
+$plaintext = getTextDataValue($dr, "Plaintext = ");
+$devaddr = getTextDataValue($dr, "DevAddr = ");
 
-/**
- * @param string $dados
- * @param string $procurar
- * @param int 	 $td
- * @param int 	 $rp
- * @param int    $posI
- * @param int 	 $posF
- */
-
-function getTextDataValue($dados, $procurar){
-	//$result = "";
-	$td = strlen($dados); 
-	$tp = strlen($procurar);
-
-	//Verificar se tem caracters nos dados
-	if ( $td > 0 && $tp > 0){
-		$posI = strpos($dados, $procurar) + $tp;
-		$posF = strpos($dados, " ", $posI) - $posI;
-
-		//Verificar se a posição inicial é maior que tamanho da string procurada
-		if ($posI > $tp) {
-			$result = substr($dados, $posI, $posF);
-		}else{
-			$result = "O texto $procurar não foi encontrado.\n";
-		}
-
-	}else{
-		$result = "Sem dados correto.\n";
-	}
-
-	return $result;
-}
-
-echo getTextDataValue($dr, "Plaintext = ");
+echo "O valor do Plaintext é: $plaintext.<br>\n";
+echo "O valor do DevAddr é: $devaddr.<br>\n";
 ?>
 
 </body>

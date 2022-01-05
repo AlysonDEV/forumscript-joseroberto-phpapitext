@@ -1,4 +1,4 @@
-# Forum Script - José Roberto Redígolo - Consimir API que retorne texto
+# Forum Script - José Roberto Redígolo - Consumir dados API que retorne texto
 Ajuda a consumir dados de API que retorna dados em texto
 
 ## Forum Script
